@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import "../tailwind.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 function Navbar() {
   return (
-    <nav className="bg-gray-800 py-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white font-bold text-xl">Job Board</Link>
-        <div>
-          <Link to="/" className="text-white mr-4">Home</Link>
+<nav className="bg-gray-900 p-4">
+      <div className="flex items-center justify-between max-w-4xl mx-auto">
+        <div className="flex items-center">
+          <FontAwesomeIcon icon={faBriefcase} className="text-white mr-2" />
+          <Link to="/" className="text-white font-bold text-lg">
+            Job Board
+          </Link>
+        </div>
+        <div className="flex items-center">
+          <Link to="/" className="text-gray-300 mr-4 hover:text-white">
+            Home
+          </Link>
           {/* Add more links here if needed */}
         </div>
       </div>
     </nav>
+
   );
 }
 
