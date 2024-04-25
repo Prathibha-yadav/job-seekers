@@ -15,7 +15,7 @@ function App() {
             <Route exact path="/" element={<JobList />} />
             <Route path="/newjob" element={<AddJobForm />} />
           </Routes>
-        
+       
       </Router>
     </div>
   );

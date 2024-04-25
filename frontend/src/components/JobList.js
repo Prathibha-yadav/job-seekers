@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import JobItem from './JobItem';
-import { Link } from 'react-router-dom'; // Correct import for Link component
+import { Link } from 'react-router-dom';
 import '../tailwind.css';
 
 function Navbar() {
@@ -11,7 +11,6 @@ function Navbar() {
         <Link to="/" className="text-white font-bold text-xl">Job Board</Link>
         <div>
           <Link to="/newjob" className="text-white mr-4">Add Job</Link>
-          {/* Add more links here if needed */}
         </div>
       </div>
     </nav>
@@ -33,17 +32,28 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
-  return (
-    <><Navbar /><div className="container mx-auto py-8">
+  const handleDelete = async (jobId) => {
+    try {
+      await axios.delete(`http://localhost:5000/jobs/${jobId}`);
+      setJobs(prevJobs => prevJobs.filter(job => job.id !== jobId));
+      window.location.reload(); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-          <h2 className="text-3xl font-bold mb-4">Job List</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {/* Render each job item using JobItem component */}
-              {jobs.map((job) => (
-                  <JobItem key={job.id} job={job} />
-              ))}
-          </div>
-      </div></>
+  return (
+    <>
+      <Navbar />
+      <div className="container mx-auto py-8">
+        <h2 className="text-3xl font-bold mb-4">Job List</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {jobs.map((job) => (
+            <JobItem key={job.id} job={job} onDelete={handleDelete} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

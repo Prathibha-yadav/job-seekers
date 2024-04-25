@@ -43,6 +43,19 @@ app.post('/newjob', async (req, res) => {
       res.status(500).json({ error: error.message });
     }
 });
+app.delete('/jobs/:id', async (req, res) => {
+    try {
+      const jobId = req.params.id;
+      const job = await Job.findByPk(jobId);
+      if (!job) {
+        return res.status(404).json({ error: 'Job not found' });
+      }
+      await job.destroy();
+      res.status(200).json({ message: 'Job deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
