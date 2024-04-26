@@ -6,19 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 function Navbar() {
   return (
-<nav className="bg-gray-900 p-4">
+<nav className="bg-gray-900 p-4 h-20">
       <div className="flex items-center justify-between max-w-4xl mx-auto">
         <div className="flex items-center">
-          <FontAwesomeIcon icon={faBriefcase} className="text-white mr-2" />
-          <Link to="/" className="text-white font-bold text-lg">
+          <FontAwesomeIcon icon={faBriefcase} className="text-white mr-2 mt-4" />
+          <Link to="/" className="text-white font-bold text-2xl mt-2">
             Job Board
           </Link>
         </div>
-        <div className="flex items-center">
-          <Link to="/" className="text-gray-300 mr-4 hover:text-white">
+        <div className="flex items-center mt-5">
+          <Link to="/" className="text-gray-300 mr-4 font-bold hover:text-white">
             Home
           </Link>
-          {/* Add more links here if needed */}
         </div>
       </div>
     </nav>
@@ -52,14 +51,14 @@ const AddJobForm = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Navbar />
-      <div className="container mx-auto py-8">
-        <h2 className="text-3xl font-bold mb-4">Add Job</h2>
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
+      <div className="container mx-auto py-8 p-8 mt-8 w-3/4 bg-white rounded-lg shadow-lg">
+        <h2 className="text-3xl text-center font-bold mb-4">Add Job</h2>
+        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
           <div className="mb-4">
             <input type="text" name="title" value={title} onChange={handleChange} placeholder="Title" className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-500" />
           </div>
           <div className="mb-4">
-            <textarea name="description" value={description} onChange={handleChange} placeholder="Description" className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-500"></textarea>
+            <textarea name="description" value={description} onChange={handleChange} placeholder="Description" className="w-full h-32  px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-500"></textarea>
           </div>
           <div className="mb-4">
             <input type="number" name="salary" value={salary} onChange={handleChange} placeholder="Salary" className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-500" />

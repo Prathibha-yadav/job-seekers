@@ -8,19 +8,18 @@ import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   return (
-    <nav className="bg-gray-900 p-4">
+    <nav className="bg-gray-900 p-4 h-20">
       <div className="flex items-center justify-between max-w-4xl mx-auto">
         <div className="flex items-center">
-          <FontAwesomeIcon icon={faBriefcase} className="text-white mr-2" />
-          <Link to="/" className="text-white font-bold text-lg">
+          <FontAwesomeIcon icon={faBriefcase} className="text-white mr-2 mt-4" />
+          <Link to="/" className="text-white font-bold text-2xl mt-2">
             Job Board
           </Link>
         </div>
-        <div className="flex items-center">
-          <Link to="/newjob" className="text-gray-300 mr-4 hover:text-white">
+        <div className="flex items-center mt-5">
+          <Link to="/newjob" className="text-gray-300 mr-4 font-bold hover:text-white">
             Add Job
           </Link>
-          {/* Add more links here if needed */}
         </div>
       </div>
     </nav>
@@ -55,8 +54,8 @@ const JobList = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto py-8">
-        <h2 className="text-3xl font-bold mb-4">Job List</h2>
+      <div className="container mx-auto py-8 p-8">
+        <h2 className="text-3xl font-bold ml-6 mb-4">Job List</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {jobs.map((job) => (
             <JobItem key={job.id} job={job} onDelete={handleDelete} />
